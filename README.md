@@ -13,7 +13,7 @@ Most of these are pretty basic, but having them all in one place avoids writing 
 
 Two things that are a bit more interesting:
 
-- clickjacking_full.html: an advanced clickjacking script for real-world multi-click Clickjacking exploitation. 
+- clickjacking_full.html: an advanced clickjacking script for real-world multi-click Clickjacking exploitation (see blog post [ClickAnywhere: An Advanced Clickjacking Script](https://security-consulting.icu/blog/2019/03/advanced-clickjacking-script/) for details). 
 - csrf-multi.html: automatically send multiple CSRF requests (for example when bruteforcing a small value - such as an IP when performing CSRF against internal networks -, or for multi-stage CSRF attacks where the order of requests dosn't matter, or requests can be performed multiple times).
 
 
