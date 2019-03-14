@@ -1,0 +1,20 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+$.ajax({
+    url: 'https://example.com', 
+    type: 'PUT',
+    contentType: "application/json; charset=utf-8",
+    xhrFields: {
+       withCredentials: true
+    },
+    crossDomain: true,
+    headers: {
+        'Accept': 'application/json, text/*'
+    },
+        data: '{"x": 1}'
+    ,
+    success: function () {
+    }
+});
+</script>

